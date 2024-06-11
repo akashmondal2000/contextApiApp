@@ -1,37 +1,18 @@
-import { useState } from "react";
+// import { useState } from "react";
+import UserContextProvider from "./context/UserContextProvider";
 import "./App.css";
+import Login from "./components/Login";
+import Profile from "./components/Profile";
 
 const App = () => {
-  const [input, setInput] = useState("");
 
-  const [submittedValue, setSubmittedValue] = useState([]);
-
-  const handleDisplayInput = () => {
-    setSubmittedValue([...submittedValue, input]);
-
-    setInput("");
-    console.log("=>", submittedValue);
-  };
   return (
-    <div>
-      <input
-        className=" border "
-        type="text"
-        value={input}
-        onChange={(e) => {
-          setInput(e.target.value);
-        }}
-      />
-      <button className="border" onClick={handleDisplayInput}>
-        submit
-      </button>
+    <UserContextProvider >
+    <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut vitae iusto aperiam!</h1>
+    <Login/>
+    <Profile/>
 
-      <ul>
-        {submittedValue.map((value, index) => (
-          <li key={index}>{value}</li>
-        ))}
-      </ul>
-    </div>
+    </UserContextProvider>
   );
 };
 
